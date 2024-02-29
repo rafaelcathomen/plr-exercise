@@ -8,6 +8,7 @@ from torchvision import datasets, transforms
 from torch.optim.lr_scheduler import StepLR
 from plr_exercise.models.cnn import Net
 from plr_exercise import PLR_ROOT_DIR
+import wandb
 
 
 def train(args, model, device, train_loader, optimizer, epoch):
@@ -31,6 +32,11 @@ def train(args, model, device, train_loader, optimizer, epoch):
                     loss.item(),
                 )
             )
+
+            percent_complete = 100.0 * batch_idx / len(train_loader)
+            # Log metrics to wandb
+            wandb.log({"epoch": epoch, "loss": loss.item(), "percent_complete": percent_complete})
+
             if args.dry_run:
                 break
 
@@ -56,6 +62,8 @@ def test(model, device, test_loader, epoch):
             test_loss, correct, len(test_loader.dataset), 100.0 * correct / len(test_loader.dataset)
         )
     )
+    # Log test loss and accuracy to wandb
+    wandb.log({"test_loss": test_loss, "test_accuracy": accuracy, "epoch": epoch})
 
 
 def main():
@@ -84,6 +92,22 @@ def main():
     args = parser.parse_args()
 
     use_cuda = not args.no_cuda and torch.cuda.is_available()
+
+    # Initialize wandb
+    wandb.init(
+        project="plr-exercise-rafael",
+        name="MNIST_CNN_Run_001",  # Custom run name
+        config={
+            "learning_rate": args.lr,
+            "architecture": "CNN",
+            "dataset": "MNIST",
+            "epochs": args.epochs,
+            "batch_size": args.batch_size,
+            "test_batch_size": args.test_batch_size,
+            "use_cuda": use_cuda,
+            "gamma": args.gamma,
+        },
+    )
 
     torch.manual_seed(args.seed)
 
