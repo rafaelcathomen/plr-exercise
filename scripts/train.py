@@ -6,44 +6,20 @@ import torch.nn.functional as F
 import torch.optim as optim
 from torchvision import datasets, transforms
 from torch.optim.lr_scheduler import StepLR
+from plr_exercise.models.cnn import Net
+from plr_exercise import PLR_ROOT_DIR
+import wandb
 
 
-class Net(nn.Module):
-    def __init__(self):
-
-
-        super(Net, self).__init__()
-        self.conv1 = nn.Conv2d(1,   32, 3, 1)
-        self.conv2 = nn.Conv2d( 32, 64, 3, 1)
-        self.dropout1 = nn.Dropout(0.25)
-        self.dropout2 = nn.Dropout(0.5)
-        self.fc1 = nn.Linear(9216, 128)
-        self.fc2 = nn.Linear(128, 10)
-
-    def forward(self, x):
-        x = self.conv1(x)
-        x = F.relu(x)
-        x = self.conv2(x)
-        x = F.relu(x)
-        x = F.max_pool2d(x, 2)
-        x = self.dropout1(x)
-        x = torch.flatten(x, 1)
-        x = self.fc1(x)
-        x = F.relu(x)
-        x = self.dropout2(x)
-        x = self.fc2(x)
-        output = F.log_softmax(x, dim=1)
-        return output
-
-
-def train(args,    model, device, train_loader, optimizer, epoch):
+def train(args, model, device, train_loader, optimizer, epoch):
     model.train()
     for batch_idx, (data, target) in enumerate(train_loader):
 
-        data, target = data.to(device),   target.to(device)
+        data, target = data.to(device), target.to(device)
         optimizer.zero_grad()
         output = model(data)
-        loss = F.nll_loss(   output, target)
+        loss = F.nll_loss(output, target)
+
         loss.backward()
         optimizer.step()
         if batch_idx % args.log_interval == 0:
@@ -52,10 +28,15 @@ def train(args,    model, device, train_loader, optimizer, epoch):
                     epoch,
                     batch_idx * len(data),
                     len(train_loader.dataset),
-                    100.0 *    batch_idx / len(train_loader),
+                    100.0 * batch_idx / len(train_loader),
                     loss.item(),
                 )
             )
+
+            percent_complete = 100.0 * batch_idx / len(train_loader)
+            # Log metrics to wandb
+            wandb.log({"epoch": epoch, "loss": loss.item(), "percent_complete": percent_complete})
+
             if args.dry_run:
                 break
 
@@ -70,17 +51,19 @@ def test(model, device, test_loader, epoch):
 
             data, target = data.to(device), target.to(device)
             output = model(data)
-            test_loss += F.nll_loss(   output,   target,   reduction="sum").item()  # sum up batch loss
+            test_loss += F.nll_loss(output, target, reduction="sum").item()  # sum up batch loss
             pred = output.argmax(dim=1, keepdim=True)  # get the index of the max log-probability
-            correct += pred.eq(target.view_as(pred)  ).sum().item()
+            correct += pred.eq(target.view_as(pred)).sum().item()
 
-    test_loss /= len(test_loader.dataset  )
+    test_loss /= len(test_loader.dataset)
 
     print(
         "\nTest set: Average loss: {:.4f}, Accuracy: {}/{} ({:.0f}%)\n".format(
             test_loss, correct, len(test_loader.dataset), 100.0 * correct / len(test_loader.dataset)
         )
     )
+    # Log test loss and accuracy to wandb
+    wandb.log({"test_loss": test_loss, "test_accuracy": accuracy, "epoch": epoch})
 
 
 def main():
@@ -107,7 +90,24 @@ def main():
     )
     parser.add_argument("--save-model", action="store_true", default=False, help="For Saving the current Model")
     args = parser.parse_args()
+
     use_cuda = not args.no_cuda and torch.cuda.is_available()
+
+    # Initialize wandb
+    wandb.init(
+        project="plr-exercise-rafael",
+        name="MNIST_CNN_Run_001",  # Custom run name
+        config={
+            "learning_rate": args.lr,
+            "architecture": "CNN",
+            "dataset": "MNIST",
+            "epochs": args.epochs,
+            "batch_size": args.batch_size,
+            "test_batch_size": args.test_batch_size,
+            "use_cuda": use_cuda,
+            "gamma": args.gamma,
+        },
+    )
 
     torch.manual_seed(args.seed)
 
@@ -124,6 +124,7 @@ def main():
         test_kwargs.update(cuda_kwargs)
 
     transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.1307,), (0.3081,))])
+
     dataset1 = datasets.MNIST("../data", train=True, download=True, transform=transform)
     dataset2 = datasets.MNIST("../data", train=False, transform=transform)
     train_loader = torch.utils.data.DataLoader(dataset1, **train_kwargs)
@@ -132,7 +133,7 @@ def main():
     model = Net().to(device)
     optimizer = optim.Adam(model.parameters(), lr=args.lr)
 
-    scheduler = StepLR(optimizer,    step_size=1, gamma=args.gamma)
+    scheduler = StepLR(optimizer, step_size=1, gamma=args.gamma)
     for epoch in range(args.epochs):
         train(args, model, device, train_loader, optimizer, epoch)
         test(model, device, test_loader, epoch)
@@ -143,4 +144,5 @@ def main():
 
 
 if __name__ == "__main__":
+
     main()
