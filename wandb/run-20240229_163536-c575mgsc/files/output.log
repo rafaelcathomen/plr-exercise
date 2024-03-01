@@ -1,0 +1,53 @@
+[32m[I 2024-02-29 16:35:37,468][39m A new study created in memory with name: no-name-25d34b77-4371-4aab-961b-8d1292186202
+/home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/scripts/train_hyperparamtuning.py:42: FutureWarning: suggest_loguniform has been deprecated in v3.0.0. This feature will be removed in v6.0.0. See https://github.com/optuna/optuna/releases/tag/v3.0.0. Use suggest_float(..., log=True) instead.
+  lr = trial.suggest_loguniform('lr', 1e-5, 1e-1)
+[33m[W 2024-02-29 16:35:51,641][39m Trial 0 failed with parameters: {'lr': 0.00013450939813173846, 'batch_size': 128, 'epochs': 1} because of the following error: KeyboardInterrupt().
+Traceback (most recent call last):
+  File "/home/rafael/venv/plr_env/lib/python3.10/site-packages/optuna/study/_optimize.py", line 200, in _run_trial
+    value_or_values = func(trial)
+  File "/home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/scripts/train_hyperparamtuning.py", line 63, in objective
+    train(model, device, train_loader, optimizer, epoch)
+  File "/home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/scripts/train_hyperparamtuning.py", line 16, in train
+    output = model(data)
+  File "/home/rafael/venv/plr_env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/rafael/venv/plr_env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/plr_exercise/models/cnn.py", line 27, in forward
+    x = F.max_pool2d(x, 2)
+  File "/home/rafael/venv/plr_env/lib/python3.10/site-packages/torch/_jit_internal.py", line 499, in fn
+    return if_false(*args, **kwargs)
+  File "/home/rafael/venv/plr_env/lib/python3.10/site-packages/torch/nn/functional.py", line 796, in _max_pool2d
+    return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
+KeyboardInterrupt
+[33m[W 2024-02-29 16:35:51,643][39m Trial 0 failed with value None.
+Traceback (most recent call last):
+  File "/home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/scripts/train_hyperparamtuning.py", line 108, in <module>
+    main()
+  File "/home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/scripts/train_hyperparamtuning.py", line 93, in main
+    study.optimize(objective, n_trials=args.n_trials)
+  File "/home/rafael/venv/plr_env/lib/python3.10/site-packages/optuna/study/study.py", line 451, in optimize
+    _optimize(
+  File "/home/rafael/venv/plr_env/lib/python3.10/site-packages/optuna/study/_optimize.py", line 66, in _optimize
+    _optimize_sequential(
+  File "/home/rafael/venv/plr_env/lib/python3.10/site-packages/optuna/study/_optimize.py", line 163, in _optimize_sequential
+    frozen_trial = _run_trial(study, func, catch)
+  File "/home/rafael/venv/plr_env/lib/python3.10/site-packages/optuna/study/_optimize.py", line 251, in _run_trial
+    raise func_err
+  File "/home/rafael/venv/plr_env/lib/python3.10/site-packages/optuna/study/_optimize.py", line 200, in _run_trial
+    value_or_values = func(trial)
+  File "/home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/scripts/train_hyperparamtuning.py", line 63, in objective
+    train(model, device, train_loader, optimizer, epoch)
+  File "/home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/scripts/train_hyperparamtuning.py", line 16, in train
+    output = model(data)
+  File "/home/rafael/venv/plr_env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/rafael/venv/plr_env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/plr_exercise/models/cnn.py", line 27, in forward
+    x = F.max_pool2d(x, 2)
+  File "/home/rafael/venv/plr_env/lib/python3.10/site-packages/torch/_jit_internal.py", line 499, in fn
+    return if_false(*args, **kwargs)
+  File "/home/rafael/venv/plr_env/lib/python3.10/site-packages/torch/nn/functional.py", line 796, in _max_pool2d
+    return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
+KeyboardInterrupt

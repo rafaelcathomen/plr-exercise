@@ -1,0 +1,120 @@
+{
+    "os": "Linux-6.5.0-21-generic-x86_64-with-glibc2.35",
+    "python": "3.10.12",
+    "heartbeatAt": "2024-02-29T15:01:11.123167",
+    "startedAt": "2024-02-29T15:01:10.290218",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/scripts/train.py",
+    "codePathLocal": "scripts/train.py",
+    "codePath": "scripts/train.py",
+    "git": {
+        "remote": "git@github.com:rafaelcathomen/plr-exercise.git",
+        "commit": "fcc2e17302afe820211cbe81aa957070369ef20d"
+    },
+    "email": "rafael@cathomen.ch",
+    "root": "/home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise",
+    "host": "rafaelsZenBook",
+    "username": "rafael",
+    "executable": "/home/rafael/venv/plr_env/bin/python3",
+    "cpu_count": 8,
+    "cpu_count_logical": 16,
+    "cpu_freq": {
+        "current": 1766.0789999999997,
+        "min": 400.0,
+        "max": 4680.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2394.917,
+            "min": 400.0,
+            "max": 4680.0
+        },
+        {
+            "current": 400.0,
+            "min": 400.0,
+            "max": 4680.0
+        },
+        {
+            "current": 2994.051,
+            "min": 400.0,
+            "max": 4680.0
+        },
+        {
+            "current": 400.0,
+            "min": 400.0,
+            "max": 4680.0
+        },
+        {
+            "current": 2815.677,
+            "min": 400.0,
+            "max": 4680.0
+        },
+        {
+            "current": 400.0,
+            "min": 400.0,
+            "max": 4680.0
+        },
+        {
+            "current": 2989.424,
+            "min": 400.0,
+            "max": 4680.0
+        },
+        {
+            "current": 2487.352,
+            "min": 400.0,
+            "max": 4680.0
+        },
+        {
+            "current": 2969.225,
+            "min": 400.0,
+            "max": 4680.0
+        },
+        {
+            "current": 400.0,
+            "min": 400.0,
+            "max": 4680.0
+        },
+        {
+            "current": 2994.077,
+            "min": 400.0,
+            "max": 4680.0
+        },
+        {
+            "current": 400.0,
+            "min": 400.0,
+            "max": 4680.0
+        },
+        {
+            "current": 2971.717,
+            "min": 400.0,
+            "max": 4680.0
+        },
+        {
+            "current": 400.0,
+            "min": 400.0,
+            "max": 4680.0
+        },
+        {
+            "current": 2394.991,
+            "min": 400.0,
+            "max": 4680.0
+        },
+        {
+            "current": 2391.792,
+            "min": 400.0,
+            "max": 4680.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 195.8055763244629,
+            "used": 91.8340835571289
+        }
+    },
+    "memory": {
+        "total": 15.017093658447266
+    }
+}

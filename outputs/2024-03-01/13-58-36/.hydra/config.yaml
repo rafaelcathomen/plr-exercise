@@ -1,0 +1,19 @@
+n_trials: 10
+wandb_project: hyperparameter-tuning
+subset_size: null
+enable_wandb: false
+lr_range:
+- 0.001
+- 0.1
+batch_sizes:
+- 64
+- 128
+- 256
+- 512
+- 1024
+epochs_range:
+- 1
+- 3
+gamma_range:
+- 0.1
+- 0.9

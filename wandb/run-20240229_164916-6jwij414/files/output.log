@@ -1,0 +1,19 @@
+[32m[I 2024-02-29 16:49:17,192][39m A new study created in memory with name: no-name-cd284cef-5adb-4a8a-a1a8-1c5e82e71a1b
+/home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/scripts/train_hyperparamtuning.py:47: FutureWarning: suggest_loguniform has been deprecated in v3.0.0. This feature will be removed in v6.0.0. See https://github.com/optuna/optuna/releases/tag/v3.0.0. Use suggest_float(..., log=True) instead.
+  lr = trial.suggest_loguniform('lr', 1e-5, 1e-1)
+[32m[I 2024-02-29 16:49:17,432][39m Trial 0 finished with value: 12.0 and parameters: {'lr': 7.831182245047563e-05, 'batch_size': 64, 'epochs': 2}. Best is trial 0 with value: 12.0.
+[32m[I 2024-02-29 16:49:17,666][39m Trial 1 finished with value: 12.0 and parameters: {'lr': 1.2564657076495592e-05, 'batch_size': 256, 'epochs': 3}. Best is trial 0 with value: 12.0.
+[32m[I 2024-02-29 16:49:17,837][39m Trial 2 finished with value: 18.0 and parameters: {'lr': 0.00011544901739930435, 'batch_size': 128, 'epochs': 2}. Best is trial 2 with value: 18.0.
+[32m[I 2024-02-29 16:49:18,027][39m Trial 3 finished with value: 12.0 and parameters: {'lr': 0.01018641519232676, 'batch_size': 64, 'epochs': 2}. Best is trial 2 with value: 18.0.
+[32m[I 2024-02-29 16:49:18,182][39m Trial 4 finished with value: 4.0 and parameters: {'lr': 0.04909698437309713, 'batch_size': 256, 'epochs': 1}. Best is trial 2 with value: 18.0.
+[32m[I 2024-02-29 16:49:18,379][39m Trial 5 finished with value: 18.0 and parameters: {'lr': 0.07297167465057251, 'batch_size': 128, 'epochs': 2}. Best is trial 2 with value: 18.0.
+[32m[I 2024-02-29 16:49:18,531][39m Trial 6 finished with value: 6.0 and parameters: {'lr': 2.209033089912764e-05, 'batch_size': 256, 'epochs': 1}. Best is trial 2 with value: 18.0.
+[32m[I 2024-02-29 16:49:18,727][39m Trial 7 finished with value: 16.0 and parameters: {'lr': 0.00041619301534301823, 'batch_size': 256, 'epochs': 2}. Best is trial 2 with value: 18.0.
+[32m[I 2024-02-29 16:49:18,867][39m Trial 8 finished with value: 8.0 and parameters: {'lr': 0.00013322389472825944, 'batch_size': 256, 'epochs': 1}. Best is trial 2 with value: 18.0.
+Best trial:
+  Value:  40.0
+  Params:
+    lr: 0.0015078817924436994
+    batch_size: 128
+    epochs: 2
+[32m[I 2024-02-29 16:49:19,058][39m Trial 9 finished with value: 40.0 and parameters: {'lr': 0.0015078817924436994, 'batch_size': 128, 'epochs': 2}. Best is trial 9 with value: 40.0.

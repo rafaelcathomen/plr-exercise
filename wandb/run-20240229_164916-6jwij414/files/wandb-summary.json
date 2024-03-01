@@ -1,0 +1,1 @@
+{"validation_loss": 2.046391906738281, "validation_accuracy": 40.0, "_timestamp": 1709221759.0599456, "_runtime": 2.847339630126953, "_step": 13, "best_accuracy": 40.0, "best_lr": 0.0015078817924436994, "best_batch_size": 128, "best_epochs": 2, "_wandb": {"runtime": 1}}

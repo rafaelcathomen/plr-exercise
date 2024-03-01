@@ -9,6 +9,7 @@ from torch.optim.lr_scheduler import StepLR
 from plr_exercise.models.cnn import Net
 from plr_exercise import PLR_ROOT_DIR
 import wandb
+import os
 
 
 def train(args, model, device, train_loader, optimizer, epoch):
@@ -63,7 +64,7 @@ def test(model, device, test_loader, epoch):
         )
     )
     # Log test loss and accuracy to wandb
-    wandb.log({"test_loss": test_loss, "test_accuracy": accuracy, "epoch": epoch})
+    wandb.log({"test_loss": test_loss, "test_accuracy": 100.0 * correct / len(test_loader.dataset), "epoch": epoch})
 
 
 def main():
@@ -94,9 +95,13 @@ def main():
     use_cuda = not args.no_cuda and torch.cuda.is_available()
 
     # Initialize wandb
-    wandb.init(
+    wandb.login()
+    os.makedirs(os.path.join(PLR_ROOT_DIR, "results"), exist_ok=True)
+    run = wandb.init(
         project="plr-exercise-rafael",
         name="MNIST_CNN_Run_001",  # Custom run name
+        dir=os.path.join(PLR_ROOT_DIR, "results"),
+        settings=wandb.Settings(code_dir=PLR_ROOT_DIR),
         config={
             "learning_rate": args.lr,
             "architecture": "CNN",
@@ -108,6 +113,9 @@ def main():
             "gamma": args.gamma,
         },
     )
+
+    include_fn = lambda path, root: path.endswith(".py") or path.endswith(".yaml")
+    run.log_code(name="source_files", root=PLR_ROOT_DIR, include_fn=include_fn)
 
     torch.manual_seed(args.seed)
 
