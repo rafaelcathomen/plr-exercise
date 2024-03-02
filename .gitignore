@@ -1,5 +1,5 @@
 results/
-.vscode/
+outputs/
 __pycache__/
 *.pyc
 *.egg*
