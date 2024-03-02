@@ -1,0 +1,35 @@
+2024-02-29 17:21:27,033 INFO    MainThread:78719 [wandb_setup.py:_flush():76] Current SDK version is 0.16.3
+2024-02-29 17:21:27,034 INFO    MainThread:78719 [wandb_setup.py:_flush():76] Configure stats pid to 78719
+2024-02-29 17:21:27,034 INFO    MainThread:78719 [wandb_setup.py:_flush():76] Loading settings from /home/rafael/.config/wandb/settings
+2024-02-29 17:21:27,034 INFO    MainThread:78719 [wandb_setup.py:_flush():76] Loading settings from /home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/wandb/settings
+2024-02-29 17:21:27,034 INFO    MainThread:78719 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2024-02-29 17:21:27,034 INFO    MainThread:78719 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2024-02-29 17:21:27,034 INFO    MainThread:78719 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'scripts/train.py', 'program_abspath': '/home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/scripts/train.py', 'program': '/home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/scripts/train.py'}
+2024-02-29 17:21:27,034 INFO    MainThread:78719 [wandb_init.py:_log_setup():526] Logging user logs to /home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/wandb/run-20240229_172127-qc739bts/logs/debug.log
+2024-02-29 17:21:27,034 INFO    MainThread:78719 [wandb_init.py:_log_setup():527] Logging internal logs to /home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/wandb/run-20240229_172127-qc739bts/logs/debug-internal.log
+2024-02-29 17:21:27,034 INFO    MainThread:78719 [wandb_init.py:init():566] calling init triggers
+2024-02-29 17:21:27,034 INFO    MainThread:78719 [wandb_init.py:init():573] wandb.init called with sweep_config: {}
+config: {'learning_rate': 1.0, 'architecture': 'CNN', 'dataset': 'MNIST', 'epochs': 2, 'batch_size': 64, 'test_batch_size': 1000, 'use_cuda': False, 'gamma': 0.7}
+2024-02-29 17:21:27,034 INFO    MainThread:78719 [wandb_init.py:init():616] starting backend
+2024-02-29 17:21:27,034 INFO    MainThread:78719 [wandb_init.py:init():620] setting up manager
+2024-02-29 17:21:27,035 INFO    MainThread:78719 [backend.py:_multiprocessing_setup():105] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2024-02-29 17:21:27,039 INFO    MainThread:78719 [wandb_init.py:init():628] backend started and connected
+2024-02-29 17:21:27,041 INFO    MainThread:78719 [wandb_init.py:init():720] updated telemetry
+2024-02-29 17:21:27,048 INFO    MainThread:78719 [wandb_init.py:init():753] communicating run to backend with 90.0 second timeout
+2024-02-29 17:21:33,094 WARNING MainThread:78719 [wandb_init.py:init():1198] interrupted
+Traceback (most recent call last):
+  File "/home/rafael/venv/plr_env/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 1176, in init
+    run = wi.init()
+  File "/home/rafael/venv/plr_env/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 756, in init
+    result = run_init_handle.wait(
+  File "/home/rafael/venv/plr_env/lib/python3.10/site-packages/wandb/sdk/lib/mailbox.py", line 283, in wait
+    found, abandoned = self._slot._get_and_clear(timeout=wait_timeout)
+  File "/home/rafael/venv/plr_env/lib/python3.10/site-packages/wandb/sdk/lib/mailbox.py", line 130, in _get_and_clear
+    if self._wait(timeout=timeout):
+  File "/home/rafael/venv/plr_env/lib/python3.10/site-packages/wandb/sdk/lib/mailbox.py", line 126, in _wait
+    return self._event.wait(timeout=timeout)
+  File "/usr/lib/python3.10/threading.py", line 607, in wait
+    signaled = self._cond.wait(timeout)
+  File "/usr/lib/python3.10/threading.py", line 324, in wait
+    gotit = waiter.acquire(True, timeout)
+KeyboardInterrupt

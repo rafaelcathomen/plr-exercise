@@ -1,0 +1,31 @@
+Train Epoch: 0 [0/60000 (0%)]	Loss: 2.305400
+Train Epoch: 0 [640/60000 (1%)]	Loss: 3.999055
+Train Epoch: 0 [1280/60000 (2%)]	Loss: 2.429988
+Train Epoch: 0 [1920/60000 (3%)]	Loss: 2.488826
+Train Epoch: 0 [2560/60000 (4%)]	Loss: 2.422600
+Train Epoch: 0 [3200/60000 (5%)]	Loss: 2.416722
+Train Epoch: 0 [3840/60000 (6%)]	Loss: 2.315219
+Train Epoch: 0 [4480/60000 (7%)]	Loss: 2.318513
+Train Epoch: 0 [5120/60000 (9%)]	Loss: 2.318708
+Train Epoch: 0 [5760/60000 (10%)]	Loss: 2.323741
+Train Epoch: 0 [6400/60000 (11%)]	Loss: 2.339620
+Train Epoch: 0 [7040/60000 (12%)]	Loss: 2.328730
+Train Epoch: 0 [7680/60000 (13%)]	Loss: 2.390278
+Train Epoch: 0 [8320/60000 (14%)]	Loss: 2.300930
+Train Epoch: 0 [8960/60000 (15%)]	Loss: 2.399053
+Train Epoch: 0 [9600/60000 (16%)]	Loss: 7141.854980
+Train Epoch: 0 [10240/60000 (17%)]	Loss: 2.304262
+Train Epoch: 0 [10880/60000 (18%)]	Loss: 2.342882
+Train Epoch: 0 [11520/60000 (19%)]	Loss: 2.355656
+Traceback (most recent call last):
+  File "/home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/scripts/train.py", line 148, in <module>
+    main()
+  File "/home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/scripts/train.py", line 138, in main
+    train(args, model, device, train_loader, optimizer, epoch)
+  File "/home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/scripts/train.py", line 23, in train
+    loss.backward()
+  File "/home/rafael/venv/plr_env/lib/python3.10/site-packages/torch/_tensor.py", line 522, in backward
+    torch.autograd.backward(
+  File "/home/rafael/venv/plr_env/lib/python3.10/site-packages/torch/autograd/__init__.py", line 266, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+KeyboardInterrupt

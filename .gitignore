@@ -1,0 +1,5 @@
+results/
+outputs/
+__pycache__/
+*.pyc
+*.egg*

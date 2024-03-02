@@ -1,0 +1,195 @@
+from __future__ import print_function
+import argparse
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+import torch.optim as optim
+from torchvision import datasets, transforms
+from torch.optim.lr_scheduler import StepLR
+from plr_exercise.models.cnn import Net
+from plr_exercise import PLR_ROOT_DIR
+import wandb
+import os
+
+
+def train(args, model, device, train_loader, optimizer, epoch):
+    """
+    Trains the model for one epoch using the given data.
+
+    Args:
+        model (nn.Module): The neural network model to be trained.
+        device (torch.device): The device (CPU or GPU) to be used for training.
+        train_loader (DataLoader): The data loader for the training dataset.
+        optimizer (torch.optim.Optimizer): The optimizer used for updating the model's parameters.
+        epoch (int): The current epoch number.
+
+    Returns:
+        None
+    """
+
+    model.train()
+    for batch_idx, (data, target) in enumerate(train_loader):
+
+        data, target = data.to(device), target.to(device)
+        optimizer.zero_grad()
+        output = model(data)
+        loss = F.nll_loss(output, target)
+
+        loss.backward()
+        optimizer.step()
+        if batch_idx % args.log_interval == 0:
+            print(
+                "Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}".format(
+                    epoch,
+                    batch_idx * len(data),
+                    len(train_loader.dataset),
+                    100.0 * batch_idx / len(train_loader),
+                    loss.item(),
+                )
+            )
+
+            percent_complete = 100.0 * batch_idx / len(train_loader)
+            # Log metrics to wandb
+            wandb.log({"epoch": epoch, "loss": loss.item(), "percent_complete": percent_complete})
+
+            if args.dry_run:
+                break
+
+
+def test(model, device, test_loader, epoch):
+    """
+    Evaluate the performance of a model on the test dataset.
+
+    Args:
+        model (torch.nn.Module): The model to be evaluated.
+        device (torch.device): The device to run the evaluation on.
+        test_loader (torch.utils.data.DataLoader): The data loader for the test dataset.
+
+    Returns:
+        tuple: A tuple containing the test loss and accuracy.
+    """
+    model.eval()
+    test_loss = 0
+    correct = 0
+
+    with torch.no_grad():
+        for data, target in test_loader:
+
+            data, target = data.to(device), target.to(device)
+            output = model(data)
+            test_loss += F.nll_loss(output, target, reduction="sum").item()  # sum up batch loss
+            pred = output.argmax(dim=1, keepdim=True)  # get the index of the max log-probability
+            correct += pred.eq(target.view_as(pred)).sum().item()
+
+    test_loss /= len(test_loader.dataset)
+
+    print(
+        "\nTest set: Average loss: {:.4f}, Accuracy: {}/{} ({:.0f}%)\n".format(
+            test_loss, correct, len(test_loader.dataset), 100.0 * correct / len(test_loader.dataset)
+        )
+    )
+    # Log test loss and accuracy to wandb
+    wandb.log({"test_loss": test_loss, "test_accuracy": 100.0 * correct / len(test_loader.dataset), "epoch": epoch})
+
+
+def main():
+    """
+    Main function for training a PyTorch model on the MNIST dataset.
+
+    Args:
+        None
+
+    Returns:
+        None
+    """
+
+    # Training settings
+    parser = argparse.ArgumentParser(description="PyTorch MNIST Example")
+    parser.add_argument(
+        "--batch-size", type=int, default=64, metavar="N", help="input batch size for training (default: 64)"
+    )
+    parser.add_argument(
+        "--test-batch-size", type=int, default=1000, metavar="N", help="input batch size for testing (default: 1000)"
+    )
+    parser.add_argument("--epochs", type=int, default=2, metavar="N", help="number of epochs to train (default: 14)")
+    parser.add_argument("--lr", type=float, default=1.0, metavar="LR", help="learning rate (default: 1.0)")
+    parser.add_argument("--gamma", type=float, default=0.7, metavar="M", help="Learning rate step gamma (default: 0.7)")
+    parser.add_argument("--no-cuda", action="store_true", default=False, help="disables CUDA training")
+    parser.add_argument("--dry-run", action="store_true", default=False, help="quickly check a single pass")
+    parser.add_argument("--seed", type=int, default=1, metavar="S", help="random seed (default: 1)")
+    parser.add_argument(
+        "--log-interval",
+        type=int,
+        default=10,
+        metavar="N",
+        help="how many batches to wait before logging training status",
+    )
+    parser.add_argument("--save-model", action="store_true", default=False, help="For Saving the current Model")
+    args = parser.parse_args()
+
+    use_cuda = not args.no_cuda and torch.cuda.is_available()
+
+    # Initialize wandb
+    wandb.login()
+    os.makedirs(os.path.join(PLR_ROOT_DIR, "results"), exist_ok=True)
+    run = wandb.init(
+        project="plr-exercise-rafael",
+        name="MNIST_CNN_Run_004",  # Custom run name
+        dir=os.path.join(PLR_ROOT_DIR, "results"),
+        settings=wandb.Settings(code_dir=PLR_ROOT_DIR),
+        config={
+            "learning_rate": args.lr,
+            "architecture": "CNN",
+            "dataset": "MNIST",
+            "epochs": args.epochs,
+            "batch_size": args.batch_size,
+            "test_batch_size": args.test_batch_size,
+            "use_cuda": use_cuda,
+            "gamma": args.gamma,
+        },
+    )
+
+    include_fn = lambda path, root: path.endswith(".py") or path.endswith(".yaml")
+    run.log_code(name="source_files", root=PLR_ROOT_DIR, include_fn=include_fn)
+
+    torch.manual_seed(args.seed)
+
+    if use_cuda:
+        device = torch.device("cuda")
+    else:
+        device = torch.device("cpu")
+
+    train_kwargs = {"batch_size": args.batch_size}
+    test_kwargs = {"batch_size": args.test_batch_size}
+    if use_cuda:
+        cuda_kwargs = {"num_workers": 1, "pin_memory": True, "shuffle": True}
+        train_kwargs.update(cuda_kwargs)
+        test_kwargs.update(cuda_kwargs)
+
+    transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.1307,), (0.3081,))])
+
+    dataset1 = datasets.MNIST("../data", train=True, download=True, transform=transform)
+    dataset2 = datasets.MNIST("../data", train=False, transform=transform)
+    train_loader = torch.utils.data.DataLoader(dataset1, **train_kwargs)
+    test_loader = torch.utils.data.DataLoader(dataset2, **test_kwargs)
+
+    model = Net().to(device)
+    wandb.watch(model, log="all", log_graph=True)
+    total_params = sum(p.numel() for p in model.parameters())
+    wandb.config.update({"total_parameters": total_params}, allow_val_change=True)    
+    print(wandb.config)
+    optimizer = optim.Adam(model.parameters(), lr=args.lr)
+
+    scheduler = StepLR(optimizer, step_size=1, gamma=args.gamma)
+    for epoch in range(args.epochs):
+        train(args, model, device, train_loader, optimizer, epoch)
+        test(model, device, test_loader, epoch)
+        scheduler.step()
+
+    if args.save_model:
+        torch.save(model.state_dict(), "mnist_cnn.pt")
+
+
+if __name__ == "__main__":
+
+    main()
