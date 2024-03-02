@@ -1,0 +1,27 @@
+[32m[I 2024-02-29 16:27:38,256][39m A new study created in memory with name: no-name-6c53b17c-39c8-4838-9e74-78251e606226
+[33m[W 2024-02-29 16:27:38,256][39m Trial 0 failed with parameters: {} because of the following error: TypeError("objective() got an unexpected keyword argument 'use_cuda'").
+Traceback (most recent call last):
+  File "/home/rafael/venv/plr_env/lib/python3.10/site-packages/optuna/study/_optimize.py", line 200, in _run_trial
+    value_or_values = func(trial)
+  File "/home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/scripts/train_hyperparamtuning.py", line 94, in objective_wrapper
+    return objective(trial, use_cuda=not args.no_cuda)
+TypeError: objective() got an unexpected keyword argument 'use_cuda'
+[33m[W 2024-02-29 16:27:38,257][39m Trial 0 failed with value None.
+Traceback (most recent call last):
+  File "/home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/scripts/train_hyperparamtuning.py", line 112, in <module>
+    main()
+  File "/home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/scripts/train_hyperparamtuning.py", line 97, in main
+    study.optimize(objective_wrapper, n_trials=args.n_trials)
+  File "/home/rafael/venv/plr_env/lib/python3.10/site-packages/optuna/study/study.py", line 451, in optimize
+    _optimize(
+  File "/home/rafael/venv/plr_env/lib/python3.10/site-packages/optuna/study/_optimize.py", line 66, in _optimize
+    _optimize_sequential(
+  File "/home/rafael/venv/plr_env/lib/python3.10/site-packages/optuna/study/_optimize.py", line 163, in _optimize_sequential
+    frozen_trial = _run_trial(study, func, catch)
+  File "/home/rafael/venv/plr_env/lib/python3.10/site-packages/optuna/study/_optimize.py", line 251, in _run_trial
+    raise func_err
+  File "/home/rafael/venv/plr_env/lib/python3.10/site-packages/optuna/study/_optimize.py", line 200, in _run_trial
+    value_or_values = func(trial)
+  File "/home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/scripts/train_hyperparamtuning.py", line 94, in objective_wrapper
+    return objective(trial, use_cuda=not args.no_cuda)
+TypeError: objective() got an unexpected keyword argument 'use_cuda'

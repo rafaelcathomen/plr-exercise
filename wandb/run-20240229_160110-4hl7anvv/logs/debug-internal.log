@@ -1,0 +1,245 @@
+2024-02-29 16:01:10,295 INFO    StreamThr :6205 [internal.py:wandb_internal():86] W&B internal server running at pid: 6205, started at: 2024-02-29 16:01:10.295170
+2024-02-29 16:01:10,298 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: status
+2024-02-29 16:01:10,303 INFO    WriterThread:6205 [datastore.py:open_for_write():87] open: /home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/wandb/run-20240229_160110-4hl7anvv/run-4hl7anvv.wandb
+2024-02-29 16:01:10,304 DEBUG   SenderThread:6205 [sender.py:send():382] send: header
+2024-02-29 16:01:10,311 DEBUG   SenderThread:6205 [sender.py:send():382] send: run
+2024-02-29 16:01:10,974 INFO    SenderThread:6205 [dir_watcher.py:__init__():211] watching files in: /home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/wandb/run-20240229_160110-4hl7anvv/files
+2024-02-29 16:01:10,975 INFO    SenderThread:6205 [sender.py:_start_run_threads():1136] run started: 4hl7anvv with start time 1709218870.301416
+2024-02-29 16:01:10,978 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: check_version
+2024-02-29 16:01:10,978 DEBUG   SenderThread:6205 [sender.py:send_request():409] send_request: check_version
+2024-02-29 16:01:11,108 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: run_start
+2024-02-29 16:01:11,109 DEBUG   HandlerThread:6205 [system_info.py:__init__():27] System info init
+2024-02-29 16:01:11,110 DEBUG   HandlerThread:6205 [system_info.py:__init__():42] System info init done
+2024-02-29 16:01:11,110 INFO    HandlerThread:6205 [system_monitor.py:start():194] Starting system monitor
+2024-02-29 16:01:11,110 INFO    SystemMonitor:6205 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-02-29 16:01:11,111 INFO    SystemMonitor:6205 [interfaces.py:start():190] Started cpu monitoring
+2024-02-29 16:01:11,111 INFO    HandlerThread:6205 [system_monitor.py:probe():214] Collecting system info
+2024-02-29 16:01:11,111 INFO    SystemMonitor:6205 [interfaces.py:start():190] Started disk monitoring
+2024-02-29 16:01:11,112 INFO    SystemMonitor:6205 [interfaces.py:start():190] Started memory monitoring
+2024-02-29 16:01:11,115 INFO    SystemMonitor:6205 [interfaces.py:start():190] Started network monitoring
+2024-02-29 16:01:11,123 DEBUG   HandlerThread:6205 [system_info.py:probe():151] Probing system
+2024-02-29 16:01:11,125 DEBUG   HandlerThread:6205 [system_info.py:_probe_git():136] Probing git
+2024-02-29 16:01:11,133 DEBUG   HandlerThread:6205 [system_info.py:_probe_git():144] Probing git done
+2024-02-29 16:01:11,133 DEBUG   HandlerThread:6205 [system_info.py:probe():199] Probing system done
+2024-02-29 16:01:11,133 DEBUG   HandlerThread:6205 [system_monitor.py:probe():223] {'os': 'Linux-6.5.0-21-generic-x86_64-with-glibc2.35', 'python': '3.10.12', 'heartbeatAt': '2024-02-29T15:01:11.123167', 'startedAt': '2024-02-29T15:01:10.290218', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '/home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/scripts/train.py', 'codePathLocal': 'scripts/train.py', 'codePath': 'scripts/train.py', 'git': {'remote': 'git@github.com:rafaelcathomen/plr-exercise.git', 'commit': 'fcc2e17302afe820211cbe81aa957070369ef20d'}, 'email': 'rafael@cathomen.ch', 'root': '/home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise', 'host': 'rafaelsZenBook', 'username': 'rafael', 'executable': '/home/rafael/venv/plr_env/bin/python3', 'cpu_count': 8, 'cpu_count_logical': 16, 'cpu_freq': {'current': 1766.0789999999997, 'min': 400.0, 'max': 4680.0}, 'cpu_freq_per_core': [{'current': 2394.917, 'min': 400.0, 'max': 4680.0}, {'current': 400.0, 'min': 400.0, 'max': 4680.0}, {'current': 2994.051, 'min': 400.0, 'max': 4680.0}, {'current': 400.0, 'min': 400.0, 'max': 4680.0}, {'current': 2815.677, 'min': 400.0, 'max': 4680.0}, {'current': 400.0, 'min': 400.0, 'max': 4680.0}, {'current': 2989.424, 'min': 400.0, 'max': 4680.0}, {'current': 2487.352, 'min': 400.0, 'max': 4680.0}, {'current': 2969.225, 'min': 400.0, 'max': 4680.0}, {'current': 400.0, 'min': 400.0, 'max': 4680.0}, {'current': 2994.077, 'min': 400.0, 'max': 4680.0}, {'current': 400.0, 'min': 400.0, 'max': 4680.0}, {'current': 2971.717, 'min': 400.0, 'max': 4680.0}, {'current': 400.0, 'min': 400.0, 'max': 4680.0}, {'current': 2394.991, 'min': 400.0, 'max': 4680.0}, {'current': 2391.792, 'min': 400.0, 'max': 4680.0}], 'disk': {'/': {'total': 195.8055763244629, 'used': 91.8340835571289}}, 'memory': {'total': 15.017093658447266}}
+2024-02-29 16:01:11,134 INFO    HandlerThread:6205 [system_monitor.py:probe():224] Finished collecting system info
+2024-02-29 16:01:11,134 INFO    HandlerThread:6205 [system_monitor.py:probe():227] Publishing system info
+2024-02-29 16:01:11,134 INFO    HandlerThread:6205 [system_monitor.py:probe():229] Finished publishing system info
+2024-02-29 16:01:11,143 DEBUG   SenderThread:6205 [sender.py:send():382] send: files
+2024-02-29 16:01:11,143 INFO    SenderThread:6205 [sender.py:_save_file():1403] saving file wandb-metadata.json with policy now
+2024-02-29 16:01:11,148 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: python_packages
+2024-02-29 16:01:11,149 DEBUG   SenderThread:6205 [sender.py:send_request():409] send_request: python_packages
+2024-02-29 16:01:11,192 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: stop_status
+2024-02-29 16:01:11,192 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: internal_messages
+2024-02-29 16:01:11,193 DEBUG   SenderThread:6205 [sender.py:send_request():409] send_request: stop_status
+2024-02-29 16:01:11,487 DEBUG   SenderThread:6205 [sender.py:send():382] send: telemetry
+2024-02-29 16:01:11,488 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: partial_history
+2024-02-29 16:01:11,493 DEBUG   SenderThread:6205 [sender.py:send():382] send: history
+2024-02-29 16:01:11,494 DEBUG   SenderThread:6205 [sender.py:send_request():409] send_request: summary_record
+2024-02-29 16:01:11,495 INFO    SenderThread:6205 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-02-29 16:01:11,885 INFO    wandb-upload_0:6205 [upload_job.py:push():131] Uploaded file /tmp/tmpzysdt8jlwandb/y3s7pcal-wandb-metadata.json
+2024-02-29 16:01:11,979 INFO    Thread-12 :6205 [dir_watcher.py:_on_file_created():271] file/dir created: /home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/wandb/run-20240229_160110-4hl7anvv/files/requirements.txt
+2024-02-29 16:01:11,980 INFO    Thread-12 :6205 [dir_watcher.py:_on_file_created():271] file/dir created: /home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/wandb/run-20240229_160110-4hl7anvv/files/wandb-metadata.json
+2024-02-29 16:01:11,980 INFO    Thread-12 :6205 [dir_watcher.py:_on_file_created():271] file/dir created: /home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/wandb/run-20240229_160110-4hl7anvv/files/wandb-summary.json
+2024-02-29 16:01:11,980 INFO    Thread-12 :6205 [dir_watcher.py:_on_file_created():271] file/dir created: /home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/wandb/run-20240229_160110-4hl7anvv/files/output.log
+2024-02-29 16:01:12,208 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: partial_history
+2024-02-29 16:01:12,213 DEBUG   SenderThread:6205 [sender.py:send():382] send: history
+2024-02-29 16:01:12,215 DEBUG   SenderThread:6205 [sender.py:send_request():409] send_request: summary_record
+2024-02-29 16:01:12,215 INFO    SenderThread:6205 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-02-29 16:01:12,742 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: partial_history
+2024-02-29 16:01:12,742 DEBUG   SenderThread:6205 [sender.py:send():382] send: history
+2024-02-29 16:01:12,742 DEBUG   SenderThread:6205 [sender.py:send_request():409] send_request: summary_record
+2024-02-29 16:01:12,743 INFO    SenderThread:6205 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-02-29 16:01:12,977 INFO    Thread-12 :6205 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/wandb/run-20240229_160110-4hl7anvv/files/wandb-summary.json
+2024-02-29 16:01:13,199 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: partial_history
+2024-02-29 16:01:13,200 DEBUG   SenderThread:6205 [sender.py:send():382] send: history
+2024-02-29 16:01:13,200 DEBUG   SenderThread:6205 [sender.py:send_request():409] send_request: summary_record
+2024-02-29 16:01:13,201 INFO    SenderThread:6205 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-02-29 16:01:13,647 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: partial_history
+2024-02-29 16:01:13,648 DEBUG   SenderThread:6205 [sender.py:send():382] send: history
+2024-02-29 16:01:13,648 DEBUG   SenderThread:6205 [sender.py:send_request():409] send_request: summary_record
+2024-02-29 16:01:13,649 INFO    SenderThread:6205 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-02-29 16:01:13,978 INFO    Thread-12 :6205 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/wandb/run-20240229_160110-4hl7anvv/files/wandb-summary.json
+2024-02-29 16:01:13,978 INFO    Thread-12 :6205 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/wandb/run-20240229_160110-4hl7anvv/files/output.log
+2024-02-29 16:01:14,112 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: partial_history
+2024-02-29 16:01:14,113 DEBUG   SenderThread:6205 [sender.py:send():382] send: history
+2024-02-29 16:01:14,113 DEBUG   SenderThread:6205 [sender.py:send_request():409] send_request: summary_record
+2024-02-29 16:01:14,113 INFO    SenderThread:6205 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-02-29 16:01:14,557 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: partial_history
+2024-02-29 16:01:14,558 DEBUG   SenderThread:6205 [sender.py:send():382] send: history
+2024-02-29 16:01:14,558 DEBUG   SenderThread:6205 [sender.py:send_request():409] send_request: summary_record
+2024-02-29 16:01:14,559 INFO    SenderThread:6205 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-02-29 16:01:14,979 INFO    Thread-12 :6205 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/wandb/run-20240229_160110-4hl7anvv/files/wandb-summary.json
+2024-02-29 16:01:15,003 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: partial_history
+2024-02-29 16:01:15,004 DEBUG   SenderThread:6205 [sender.py:send():382] send: history
+2024-02-29 16:01:15,004 DEBUG   SenderThread:6205 [sender.py:send_request():409] send_request: summary_record
+2024-02-29 16:01:15,004 INFO    SenderThread:6205 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-02-29 16:01:15,478 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: partial_history
+2024-02-29 16:01:15,479 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: status_report
+2024-02-29 16:01:15,479 DEBUG   SenderThread:6205 [sender.py:send():382] send: history
+2024-02-29 16:01:15,479 DEBUG   SenderThread:6205 [sender.py:send_request():409] send_request: summary_record
+2024-02-29 16:01:15,480 INFO    SenderThread:6205 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-02-29 16:01:15,977 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: partial_history
+2024-02-29 16:01:15,978 DEBUG   SenderThread:6205 [sender.py:send():382] send: history
+2024-02-29 16:01:15,978 DEBUG   SenderThread:6205 [sender.py:send_request():409] send_request: summary_record
+2024-02-29 16:01:15,978 INFO    SenderThread:6205 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-02-29 16:01:15,979 INFO    Thread-12 :6205 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/wandb/run-20240229_160110-4hl7anvv/files/wandb-summary.json
+2024-02-29 16:01:15,979 INFO    Thread-12 :6205 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/wandb/run-20240229_160110-4hl7anvv/files/output.log
+2024-02-29 16:01:16,440 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: partial_history
+2024-02-29 16:01:16,441 DEBUG   SenderThread:6205 [sender.py:send():382] send: history
+2024-02-29 16:01:16,441 DEBUG   SenderThread:6205 [sender.py:send_request():409] send_request: summary_record
+2024-02-29 16:01:16,441 INFO    SenderThread:6205 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-02-29 16:01:16,936 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: partial_history
+2024-02-29 16:01:16,937 DEBUG   SenderThread:6205 [sender.py:send():382] send: history
+2024-02-29 16:01:16,937 DEBUG   SenderThread:6205 [sender.py:send_request():409] send_request: summary_record
+2024-02-29 16:01:16,937 INFO    SenderThread:6205 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-02-29 16:01:16,979 INFO    Thread-12 :6205 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/wandb/run-20240229_160110-4hl7anvv/files/wandb-summary.json
+2024-02-29 16:01:17,447 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: partial_history
+2024-02-29 16:01:17,448 DEBUG   SenderThread:6205 [sender.py:send():382] send: history
+2024-02-29 16:01:17,448 DEBUG   SenderThread:6205 [sender.py:send_request():409] send_request: summary_record
+2024-02-29 16:01:17,448 INFO    SenderThread:6205 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-02-29 16:01:17,898 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: partial_history
+2024-02-29 16:01:17,898 DEBUG   SenderThread:6205 [sender.py:send():382] send: history
+2024-02-29 16:01:17,898 DEBUG   SenderThread:6205 [sender.py:send_request():409] send_request: summary_record
+2024-02-29 16:01:17,899 INFO    SenderThread:6205 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-02-29 16:01:17,980 INFO    Thread-12 :6205 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/wandb/run-20240229_160110-4hl7anvv/files/wandb-summary.json
+2024-02-29 16:01:17,980 INFO    Thread-12 :6205 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/wandb/run-20240229_160110-4hl7anvv/files/output.log
+2024-02-29 16:01:18,330 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: partial_history
+2024-02-29 16:01:18,330 DEBUG   SenderThread:6205 [sender.py:send():382] send: history
+2024-02-29 16:01:18,331 DEBUG   SenderThread:6205 [sender.py:send_request():409] send_request: summary_record
+2024-02-29 16:01:18,331 INFO    SenderThread:6205 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-02-29 16:01:18,865 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: partial_history
+2024-02-29 16:01:18,865 DEBUG   SenderThread:6205 [sender.py:send():382] send: history
+2024-02-29 16:01:18,865 DEBUG   SenderThread:6205 [sender.py:send_request():409] send_request: summary_record
+2024-02-29 16:01:18,866 INFO    SenderThread:6205 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-02-29 16:01:18,981 INFO    Thread-12 :6205 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/wandb/run-20240229_160110-4hl7anvv/files/wandb-summary.json
+2024-02-29 16:01:19,522 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: partial_history
+2024-02-29 16:01:19,523 DEBUG   SenderThread:6205 [sender.py:send():382] send: history
+2024-02-29 16:01:19,523 DEBUG   SenderThread:6205 [sender.py:send_request():409] send_request: summary_record
+2024-02-29 16:01:19,523 INFO    SenderThread:6205 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-02-29 16:01:19,982 INFO    Thread-12 :6205 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/wandb/run-20240229_160110-4hl7anvv/files/wandb-summary.json
+2024-02-29 16:01:19,983 INFO    Thread-12 :6205 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/wandb/run-20240229_160110-4hl7anvv/files/output.log
+2024-02-29 16:01:20,150 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: partial_history
+2024-02-29 16:01:20,151 DEBUG   SenderThread:6205 [sender.py:send():382] send: history
+2024-02-29 16:01:20,151 DEBUG   SenderThread:6205 [sender.py:send_request():409] send_request: summary_record
+2024-02-29 16:01:20,152 INFO    SenderThread:6205 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-02-29 16:01:20,767 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: status_report
+2024-02-29 16:01:20,768 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: partial_history
+2024-02-29 16:01:20,768 DEBUG   SenderThread:6205 [sender.py:send():382] send: history
+2024-02-29 16:01:20,769 DEBUG   SenderThread:6205 [sender.py:send_request():409] send_request: summary_record
+2024-02-29 16:01:20,769 INFO    SenderThread:6205 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-02-29 16:01:20,813 DEBUG   SenderThread:6205 [sender.py:send():382] send: exit
+2024-02-29 16:01:20,813 INFO    SenderThread:6205 [sender.py:send_exit():589] handling exit code: 255
+2024-02-29 16:01:20,813 INFO    SenderThread:6205 [sender.py:send_exit():591] handling runtime: 9
+2024-02-29 16:01:20,813 INFO    SenderThread:6205 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-02-29 16:01:20,814 INFO    SenderThread:6205 [sender.py:send_exit():597] send defer
+2024-02-29 16:01:20,814 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: defer
+2024-02-29 16:01:20,814 INFO    HandlerThread:6205 [handler.py:handle_request_defer():172] handle defer: 0
+2024-02-29 16:01:20,814 DEBUG   SenderThread:6205 [sender.py:send_request():409] send_request: defer
+2024-02-29 16:01:20,814 INFO    SenderThread:6205 [sender.py:send_request_defer():613] handle sender defer: 0
+2024-02-29 16:01:20,814 INFO    SenderThread:6205 [sender.py:transition_state():617] send defer: 1
+2024-02-29 16:01:20,814 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: defer
+2024-02-29 16:01:20,814 INFO    HandlerThread:6205 [handler.py:handle_request_defer():172] handle defer: 1
+2024-02-29 16:01:20,814 DEBUG   SenderThread:6205 [sender.py:send_request():409] send_request: defer
+2024-02-29 16:01:20,814 INFO    SenderThread:6205 [sender.py:send_request_defer():613] handle sender defer: 1
+2024-02-29 16:01:20,814 INFO    SenderThread:6205 [sender.py:transition_state():617] send defer: 2
+2024-02-29 16:01:20,814 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: defer
+2024-02-29 16:01:20,814 INFO    HandlerThread:6205 [handler.py:handle_request_defer():172] handle defer: 2
+2024-02-29 16:01:20,814 INFO    HandlerThread:6205 [system_monitor.py:finish():203] Stopping system monitor
+2024-02-29 16:01:20,814 DEBUG   SystemMonitor:6205 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-02-29 16:01:20,815 INFO    HandlerThread:6205 [interfaces.py:finish():202] Joined cpu monitor
+2024-02-29 16:01:20,815 DEBUG   SystemMonitor:6205 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-02-29 16:01:20,815 INFO    HandlerThread:6205 [interfaces.py:finish():202] Joined disk monitor
+2024-02-29 16:01:20,815 DEBUG   SystemMonitor:6205 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-02-29 16:01:20,815 INFO    HandlerThread:6205 [interfaces.py:finish():202] Joined memory monitor
+2024-02-29 16:01:20,816 INFO    HandlerThread:6205 [interfaces.py:finish():202] Joined network monitor
+2024-02-29 16:01:20,816 DEBUG   SenderThread:6205 [sender.py:send_request():409] send_request: defer
+2024-02-29 16:01:20,816 INFO    SenderThread:6205 [sender.py:send_request_defer():613] handle sender defer: 2
+2024-02-29 16:01:20,816 INFO    SenderThread:6205 [sender.py:transition_state():617] send defer: 3
+2024-02-29 16:01:20,816 DEBUG   SenderThread:6205 [sender.py:send():382] send: stats
+2024-02-29 16:01:20,816 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: defer
+2024-02-29 16:01:20,816 INFO    HandlerThread:6205 [handler.py:handle_request_defer():172] handle defer: 3
+2024-02-29 16:01:20,816 DEBUG   SenderThread:6205 [sender.py:send_request():409] send_request: defer
+2024-02-29 16:01:20,816 INFO    SenderThread:6205 [sender.py:send_request_defer():613] handle sender defer: 3
+2024-02-29 16:01:20,816 INFO    SenderThread:6205 [sender.py:transition_state():617] send defer: 4
+2024-02-29 16:01:20,816 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: defer
+2024-02-29 16:01:20,817 INFO    HandlerThread:6205 [handler.py:handle_request_defer():172] handle defer: 4
+2024-02-29 16:01:20,817 DEBUG   SenderThread:6205 [sender.py:send_request():409] send_request: defer
+2024-02-29 16:01:20,817 INFO    SenderThread:6205 [sender.py:send_request_defer():613] handle sender defer: 4
+2024-02-29 16:01:20,817 INFO    SenderThread:6205 [sender.py:transition_state():617] send defer: 5
+2024-02-29 16:01:20,817 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: defer
+2024-02-29 16:01:20,817 INFO    HandlerThread:6205 [handler.py:handle_request_defer():172] handle defer: 5
+2024-02-29 16:01:20,817 DEBUG   SenderThread:6205 [sender.py:send():382] send: summary
+2024-02-29 16:01:20,817 INFO    SenderThread:6205 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-02-29 16:01:20,818 DEBUG   SenderThread:6205 [sender.py:send_request():409] send_request: defer
+2024-02-29 16:01:20,818 INFO    SenderThread:6205 [sender.py:send_request_defer():613] handle sender defer: 5
+2024-02-29 16:01:20,818 INFO    SenderThread:6205 [sender.py:transition_state():617] send defer: 6
+2024-02-29 16:01:20,818 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: defer
+2024-02-29 16:01:20,818 INFO    HandlerThread:6205 [handler.py:handle_request_defer():172] handle defer: 6
+2024-02-29 16:01:20,818 DEBUG   SenderThread:6205 [sender.py:send_request():409] send_request: defer
+2024-02-29 16:01:20,818 INFO    SenderThread:6205 [sender.py:send_request_defer():613] handle sender defer: 6
+2024-02-29 16:01:20,820 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: status_report
+2024-02-29 16:01:20,982 INFO    Thread-12 :6205 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/wandb/run-20240229_160110-4hl7anvv/files/wandb-summary.json
+2024-02-29 16:01:21,002 INFO    SenderThread:6205 [sender.py:transition_state():617] send defer: 7
+2024-02-29 16:01:21,003 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: defer
+2024-02-29 16:01:21,003 INFO    HandlerThread:6205 [handler.py:handle_request_defer():172] handle defer: 7
+2024-02-29 16:01:21,003 DEBUG   SenderThread:6205 [sender.py:send_request():409] send_request: defer
+2024-02-29 16:01:21,003 INFO    SenderThread:6205 [sender.py:send_request_defer():613] handle sender defer: 7
+2024-02-29 16:01:21,813 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: poll_exit
+2024-02-29 16:01:21,983 INFO    Thread-12 :6205 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/wandb/run-20240229_160110-4hl7anvv/files/config.yaml
+2024-02-29 16:01:21,984 INFO    Thread-12 :6205 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/wandb/run-20240229_160110-4hl7anvv/files/output.log
+2024-02-29 16:01:22,817 INFO    SenderThread:6205 [sender.py:transition_state():617] send defer: 8
+2024-02-29 16:01:22,817 DEBUG   SenderThread:6205 [sender.py:send_request():409] send_request: poll_exit
+2024-02-29 16:01:22,817 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: defer
+2024-02-29 16:01:22,817 INFO    HandlerThread:6205 [handler.py:handle_request_defer():172] handle defer: 8
+2024-02-29 16:01:22,818 DEBUG   SenderThread:6205 [sender.py:send_request():409] send_request: defer
+2024-02-29 16:01:22,818 INFO    SenderThread:6205 [sender.py:send_request_defer():613] handle sender defer: 8
+2024-02-29 16:01:22,818 INFO    SenderThread:6205 [job_builder.py:build():296] Attempting to build job artifact
+2024-02-29 16:01:22,818 INFO    SenderThread:6205 [job_builder.py:_get_source_type():426] is repo sourced job
+2024-02-29 16:01:22,843 INFO    SenderThread:6205 [job_builder.py:build():402] adding wandb-job metadata file
+2024-02-29 16:01:22,846 INFO    SenderThread:6205 [sender.py:transition_state():617] send defer: 9
+2024-02-29 16:01:22,847 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: defer
+2024-02-29 16:01:22,847 INFO    HandlerThread:6205 [handler.py:handle_request_defer():172] handle defer: 9
+2024-02-29 16:01:22,847 DEBUG   SenderThread:6205 [sender.py:send():382] send: artifact
+2024-02-29 16:01:22,983 INFO    Thread-12 :6205 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/wandb/run-20240229_160110-4hl7anvv/files/output.log
+2024-02-29 16:01:23,815 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: poll_exit
+2024-02-29 16:01:24,584 INFO    wandb-upload_0:6205 [upload_job.py:push():86] Skipped uploading /home/rafael/.local/share/wandb/artifacts/staging/tmpdfs533hg
+2024-02-29 16:01:25,004 INFO    wandb-upload_1:6205 [upload_job.py:push():89] Uploaded file /home/rafael/.local/share/wandb/artifacts/staging/tmpo945iqq8
+2024-02-29 16:01:26,328 INFO    SenderThread:6205 [sender.py:send_artifact():1494] sent artifact job-git_github.com_rafaelcathomen_plr-exercise.git_scripts_train.py - {'id': 'QXJ0aWZhY3Q6NzM1Mzk5NzI5', 'state': 'PENDING', 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjE0NDEzMTIwNA==', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6NzM1Mzg5OTg2', 'versionIndex': 0}}}
+2024-02-29 16:01:26,329 DEBUG   SenderThread:6205 [sender.py:send_request():409] send_request: defer
+2024-02-29 16:01:26,329 INFO    SenderThread:6205 [sender.py:send_request_defer():613] handle sender defer: 9
+2024-02-29 16:01:26,329 INFO    SenderThread:6205 [dir_watcher.py:finish():358] shutting down directory watcher
+2024-02-29 16:01:26,329 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: status_report
+2024-02-29 16:01:26,985 INFO    SenderThread:6205 [dir_watcher.py:finish():388] scan: /home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/wandb/run-20240229_160110-4hl7anvv/files
+2024-02-29 16:01:26,986 INFO    SenderThread:6205 [dir_watcher.py:finish():402] scan save: /home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/wandb/run-20240229_160110-4hl7anvv/files/config.yaml config.yaml
+2024-02-29 16:01:26,986 INFO    SenderThread:6205 [dir_watcher.py:finish():402] scan save: /home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/wandb/run-20240229_160110-4hl7anvv/files/wandb-metadata.json wandb-metadata.json
+2024-02-29 16:01:26,986 INFO    SenderThread:6205 [dir_watcher.py:finish():402] scan save: /home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/wandb/run-20240229_160110-4hl7anvv/files/output.log output.log
+2024-02-29 16:01:26,986 INFO    SenderThread:6205 [dir_watcher.py:finish():402] scan save: /home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/wandb/run-20240229_160110-4hl7anvv/files/requirements.txt requirements.txt
+2024-02-29 16:01:26,991 INFO    SenderThread:6205 [dir_watcher.py:finish():402] scan save: /home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/wandb/run-20240229_160110-4hl7anvv/files/wandb-summary.json wandb-summary.json
+2024-02-29 16:01:26,992 INFO    SenderThread:6205 [sender.py:transition_state():617] send defer: 10
+2024-02-29 16:01:26,992 DEBUG   SenderThread:6205 [sender.py:send_request():409] send_request: poll_exit
+2024-02-29 16:01:26,994 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: defer
+2024-02-29 16:01:26,994 INFO    HandlerThread:6205 [handler.py:handle_request_defer():172] handle defer: 10
+2024-02-29 16:01:26,995 DEBUG   SenderThread:6205 [sender.py:send_request():409] send_request: defer
+2024-02-29 16:01:26,995 INFO    SenderThread:6205 [sender.py:send_request_defer():613] handle sender defer: 10
+2024-02-29 16:01:26,995 INFO    SenderThread:6205 [file_pusher.py:finish():172] shutting down file pusher
+2024-02-29 16:01:27,315 WARNING StreamThr :6205 [internal.py:is_dead():414] Internal process exiting, parent pid 6115 disappeared
+2024-02-29 16:01:27,315 ERROR   StreamThr :6205 [internal.py:wandb_internal():152] Internal process shutdown.
+2024-02-29 16:01:27,373 INFO    wandb-upload_0:6205 [upload_job.py:push():131] Uploaded file /home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/wandb/run-20240229_160110-4hl7anvv/files/config.yaml
+2024-02-29 16:01:27,451 INFO    wandb-upload_1:6205 [upload_job.py:push():131] Uploaded file /home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/wandb/run-20240229_160110-4hl7anvv/files/output.log
+2024-02-29 16:01:27,493 INFO    wandb-upload_3:6205 [upload_job.py:push():131] Uploaded file /home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/wandb/run-20240229_160110-4hl7anvv/files/wandb-summary.json
+2024-02-29 16:01:27,585 INFO    wandb-upload_2:6205 [upload_job.py:push():131] Uploaded file /home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/wandb/run-20240229_160110-4hl7anvv/files/requirements.txt
+2024-02-29 16:01:27,787 INFO    Thread-11 (_thread_body):6205 [sender.py:transition_state():617] send defer: 11
+2024-02-29 16:01:27,787 DEBUG   HandlerThread:6205 [handler.py:handle_request():146] handle_request: defer
+2024-02-29 16:01:27,787 INFO    HandlerThread:6205 [handler.py:handle_request_defer():172] handle defer: 11
+2024-02-29 16:01:27,788 INFO    HandlerThread:6205 [handler.py:finish():869] shutting down handler
+2024-02-29 16:01:27,788 INFO    WriterThread:6205 [datastore.py:close():296] close: /home/rafael/Projects/ETH/FS2024/PLR_exercises/plr-exercise/wandb/run-20240229_160110-4hl7anvv/run-4hl7anvv.wandb
+2024-02-29 16:01:27,788 DEBUG   SenderThread:6205 [sender.py:send_request():409] send_request: defer
+2024-02-29 16:01:27,788 INFO    SenderThread:6205 [sender.py:send_request_defer():613] handle sender defer: 11
+2024-02-29 16:01:27,788 INFO    SenderThread:6205 [file_pusher.py:join():178] waiting for file pusher
+2024-02-29 16:01:27,789 INFO    SenderThread:6205 [sender.py:transition_state():617] send defer: 12
+2024-02-29 16:01:27,789 INFO    SenderThread:6205 [sender.py:finish():1572] shutting down sender
+2024-02-29 16:01:27,789 INFO    SenderThread:6205 [file_pusher.py:finish():172] shutting down file pusher
+2024-02-29 16:01:27,789 INFO    SenderThread:6205 [file_pusher.py:join():178] waiting for file pusher
+2024-02-29 16:01:27,789 INFO    SenderThread:6205 [file_stream.py:finish():595] file stream finish called
+2024-02-29 16:01:27,951 INFO    SenderThread:6205 [file_stream.py:finish():599] file stream finish is done

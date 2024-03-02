@@ -1,0 +1,6 @@
+results/
+outputs/
+.vscode/
+__pycache__/
+*.pyc
+*.egg*
