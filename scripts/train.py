@@ -13,6 +13,20 @@ import os
 
 
 def train(args, model, device, train_loader, optimizer, epoch):
+    """
+    Trains the model for one epoch using the given data.
+
+    Args:
+        model (nn.Module): The neural network model to be trained.
+        device (torch.device): The device (CPU or GPU) to be used for training.
+        train_loader (DataLoader): The data loader for the training dataset.
+        optimizer (torch.optim.Optimizer): The optimizer used for updating the model's parameters.
+        epoch (int): The current epoch number.
+
+    Returns:
+        None
+    """
+
     model.train()
     for batch_idx, (data, target) in enumerate(train_loader):
 
@@ -43,6 +57,17 @@ def train(args, model, device, train_loader, optimizer, epoch):
 
 
 def test(model, device, test_loader, epoch):
+    """
+    Evaluate the performance of a model on the test dataset.
+
+    Args:
+        model (torch.nn.Module): The model to be evaluated.
+        device (torch.device): The device to run the evaluation on.
+        test_loader (torch.utils.data.DataLoader): The data loader for the test dataset.
+
+    Returns:
+        tuple: A tuple containing the test loss and accuracy.
+    """
     model.eval()
     test_loss = 0
     correct = 0
@@ -68,6 +93,16 @@ def test(model, device, test_loader, epoch):
 
 
 def main():
+    """
+    Main function for training a PyTorch model on the MNIST dataset.
+
+    Args:
+        None
+
+    Returns:
+        None
+    """
+
     # Training settings
     parser = argparse.ArgumentParser(description="PyTorch MNIST Example")
     parser.add_argument(
@@ -99,7 +134,7 @@ def main():
     os.makedirs(os.path.join(PLR_ROOT_DIR, "results"), exist_ok=True)
     run = wandb.init(
         project="plr-exercise-rafael",
-        name="MNIST_CNN_Run_001",  # Custom run name
+        name="MNIST_CNN_Run_004",  # Custom run name
         dir=os.path.join(PLR_ROOT_DIR, "results"),
         settings=wandb.Settings(code_dir=PLR_ROOT_DIR),
         config={
@@ -139,6 +174,10 @@ def main():
     test_loader = torch.utils.data.DataLoader(dataset2, **test_kwargs)
 
     model = Net().to(device)
+    wandb.watch(model, log="all", log_graph=True)
+    total_params = sum(p.numel() for p in model.parameters())
+    wandb.config.update({"total_parameters": total_params}, allow_val_change=True)    
+    print(wandb.config)
     optimizer = optim.Adam(model.parameters(), lr=args.lr)
 
     scheduler = StepLR(optimizer, step_size=1, gamma=args.gamma)

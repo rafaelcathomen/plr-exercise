@@ -16,6 +16,20 @@ import os
 
 
 def train(model, device, train_loader, optimizer, epoch):
+    """
+    Trains the model for one epoch using the given data.
+
+    Args:
+        model (nn.Module): The neural network model to be trained.
+        device (torch.device): The device (CPU or GPU) to be used for training.
+        train_loader (DataLoader): The data loader for the training dataset.
+        optimizer (torch.optim.Optimizer): The optimizer used for updating the model's parameters.
+        epoch (int): The current epoch number.
+
+    Returns:
+        None
+    """
+
     model.train()
     for batch_idx, (data, target) in enumerate(train_loader):
         data, target = data.to(device), target.to(device)
@@ -27,6 +41,17 @@ def train(model, device, train_loader, optimizer, epoch):
 
 
 def test(model, device, test_loader):
+    """
+    Evaluate the performance of a model on the test dataset.
+
+    Args:
+        model (torch.nn.Module): The model to be evaluated.
+        device (torch.device): The device to run the evaluation on.
+        test_loader (torch.utils.data.DataLoader): The data loader for the test dataset.
+
+    Returns:
+        tuple: A tuple containing the test loss and accuracy.
+    """
     model.eval()
     test_loss = 0
     correct = 0
@@ -43,6 +68,15 @@ def test(model, device, test_loader):
 
 
 def objective(trial, config):
+    """Optimization objective function for hyperparameter tuning.
+
+    Args:
+        trial (optuna.Trial): A trial object that stores the hyperparameters to be optimized.
+        config (Config): An object that contains the configuration settings.
+
+    Returns:
+        float: The test loss value.
+    """
     # Setup device
     use_cuda = torch.cuda.is_available()
     device = torch.device("cuda" if use_cuda else "cpu")
@@ -106,7 +140,6 @@ def main(cfg: DictConfig):
         )
         include_fn = lambda path, root: path.endswith(".py") or path.endswith(".yaml")
         run.log_code(name="source_files", root=PLR_ROOT_DIR, include_fn=include_fn)
-
     else:
         # Set wandb to a dummy function or class that does nothing
         class DummyWandB:
