@@ -10,7 +10,7 @@ import optuna
 from torch.utils.data import Subset
 import numpy as np
 import hydra
-from omegaconf import DictConfig, OmegaConf
+from omegaconf import DictConfig  # , OmegaConf
 from pathlib import Path
 import os
 
@@ -138,15 +138,13 @@ def main(cfg: DictConfig):
             settings=wandb.Settings(code_dir=PLR_ROOT_DIR),
             config=cfg,
         )
-        include_fn = lambda path, root: path.endswith(".py") or path.endswith(".yaml")
+
+        def include_fn(path, root):
+            return path.endswith(".py") or path.endswith(".yaml")
+
         run.log_code(name="source_files", root=PLR_ROOT_DIR, include_fn=include_fn)
     else:
-        # Set wandb to a dummy function or class that does nothing
-        class DummyWandB:
-            def log(*args, **kwargs):
-                pass
-
-        wandb = DummyWandB()
+        wandb.init(mode="disabled")
 
     study = optuna.create_study(direction="minimize")
 
