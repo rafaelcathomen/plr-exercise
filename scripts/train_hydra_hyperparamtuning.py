@@ -1,21 +1,32 @@
+# Standard library imports
+import os
+from pathlib import Path
+
+# Related third party imports
+import hydra
+import numpy as np
+import optuna
 import torch
 import torch.nn.functional as F
 import torch.optim as optim
-from torchvision import datasets, transforms
-from torch.optim.lr_scheduler import StepLR
-from plr_exercise.models.cnn import Net
-from plr_exercise import PLR_ROOT_DIR
-import wandb
-import optuna
-from torch.utils.data import Subset
-import numpy as np
-import hydra
 from omegaconf import DictConfig  # , OmegaConf
-from pathlib import Path
-import os
+from torch.optim.lr_scheduler import StepLR
+from torch.utils.data import DataLoader, Subset
+from torchvision import datasets, transforms
+import wandb
+
+# Local application/library specific imports
+from plr_exercise import PLR_ROOT_DIR
+from plr_exercise.models.cnn import Net
 
 
-def train(model, device, train_loader, optimizer, epoch):
+def train(
+    model: torch.nn.Module,
+    device: torch.device,
+    train_loader: DataLoader,
+    optimizer: torch.optim.Optimizer,
+    epoch: int,
+) -> None:
     """
     Trains the model for one epoch using the given data.
 
@@ -40,7 +51,7 @@ def train(model, device, train_loader, optimizer, epoch):
         optimizer.step()
 
 
-def test(model, device, test_loader):
+def test(model: torch.nn.Module, device: torch.device, test_loader: DataLoader) -> tuple[float, float]:
     """
     Evaluate the performance of a model on the test dataset.
 
@@ -53,6 +64,7 @@ def test(model, device, test_loader):
         tuple: A tuple containing the test loss and accuracy.
     """
     model.eval()
+
     test_loss = 0
     correct = 0
     with torch.no_grad():
@@ -62,12 +74,12 @@ def test(model, device, test_loader):
             test_loss += F.nll_loss(output, target, reduction="sum").item()
             pred = output.argmax(dim=1, keepdim=True)
             correct += pred.eq(target.view_as(pred)).sum().item()
-    test_loss /= len(test_loader.dataset)
-    accuracy = 100.0 * correct / len(test_loader.dataset)
+    test_loss /= len(test_loader.dataset)  # type: ignore
+    accuracy = 100.0 * correct / len(test_loader.dataset)  # type: ignore
     return test_loss, accuracy
 
 
-def objective(trial, config):
+def objective(trial: optuna.Trial, config: DictConfig) -> float:
     """Optimization objective function for hyperparameter tuning.
 
     Args:
@@ -104,8 +116,8 @@ def objective(trial, config):
         dataset1 = Subset(dataset1, indices_train)
         dataset2 = Subset(dataset2, indices_test)
 
-    train_loader = torch.utils.data.DataLoader(dataset1, batch_size=batch_size, shuffle=True)
-    test_loader = torch.utils.data.DataLoader(dataset2, batch_size=batch_size, shuffle=False)
+    train_loader = DataLoader(dataset1, batch_size=batch_size, shuffle=True)
+    test_loader = DataLoader(dataset2, batch_size=batch_size, shuffle=False)
 
     # Model, optimizer, and scheduler setup
     model = Net().to(device)
@@ -136,13 +148,13 @@ def main(cfg: DictConfig):
             dir=os.path.join(PLR_ROOT_DIR, "results"),
             project=cfg.wandb_project,
             settings=wandb.Settings(code_dir=PLR_ROOT_DIR),
-            config=cfg,
+            config=dict(cfg),
         )
 
         def include_fn(path, root):
             return path.endswith(".py") or path.endswith(".yaml")
 
-        run.log_code(name="source_files", root=PLR_ROOT_DIR, include_fn=include_fn)
+        run.log_code(name="source_files", root=PLR_ROOT_DIR, include_fn=include_fn)  # type: ignore
     else:
         wandb.init(mode="disabled")
 

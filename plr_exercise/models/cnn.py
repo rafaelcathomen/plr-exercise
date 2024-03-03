@@ -1,11 +1,7 @@
 from __future__ import print_function
-import argparse
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-import torch.optim as optim
-from torchvision import datasets, transforms
-from torch.optim.lr_scheduler import StepLR
 
 
 class Net(nn.Module):
@@ -19,7 +15,7 @@ class Net(nn.Module):
         self.fc1 = nn.Linear(9216, 128)
         self.fc2 = nn.Linear(128, 10)
 
-    def forward(self, x):
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
         x = self.conv1(x)
         x = F.relu(x)
         x = self.conv2(x)
